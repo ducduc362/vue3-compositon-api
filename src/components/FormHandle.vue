@@ -1,0 +1,183 @@
+<template>
+  <div class="m-5">
+    {{ JSON.stringify(formValues, null, 2) }}
+  </div>
+  <form class="form" @submit.prevent="submitForm">
+    <h1>Form</h1>
+
+    <div>
+      <label for="name">Name</label>
+      <input class="form-control" id="name" v-model="formValues.name" />
+    </div>
+    <div>
+      <label for="profile-sumarry">Profile Sumarry</label>
+      <textarea
+        class="form-control"
+        id="profile-sumarry"
+        v-model="formValues.profileSumarry"
+      >
+      </textarea>
+    </div>
+    <div>
+      <label for="country">Country</label>
+      <select class="form-control" id="country" v-model="formValues.country">
+        <option value="">Select a country</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+        <option value="australia">Australia</option>
+      </select>
+    </div>
+    <div>
+      <label for="job-location">Job Location</label>
+      <select
+        class="form-control"
+        id="job-location"
+        multiple
+        v-model="formValues.jobLocation"
+      >
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+        <option value="australia">Australia</option>
+      </select>
+    </div>
+    <div>
+      <input
+        id="remoteWork"
+        type="checkbox"
+        v-model="formValues.remoteWork"
+        true-value="yes"
+        false-value="no"
+      />
+      <label for="remoteWork">Open to remote work?</label>
+    </div>
+    <div>
+      <label>Skill set</label>
+      <input
+        type="checkbox"
+        id="html"
+        value="html"
+        v-model="formValues.skillSet"
+      />
+      <label for="html">HTML</label>
+      <input
+        type="checkbox"
+        id="css"
+        value="css"
+        v-model="formValues.skillSet"
+      />
+      <label for="css">CSS</label>
+      <input
+        type="checkbox"
+        id="javascript"
+        value="javascript"
+        v-model="formValues.skillSet"
+      />
+      <label for="javascript">JavaScript</label>
+    </div>
+    <div>
+      <label>Years of Experience</label>
+      <input
+        type="radio"
+        id="0-2"
+        value="0-2"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="0-2">0-2</label>
+      <input
+        type="radio"
+        id="3-5"
+        value="3-5"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="3-5">3-5</label>
+      <input
+        type="radio"
+        id="6-10"
+        value="6-10"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="6-10">5-10</label>
+      <input
+        type="radio"
+        id="10+"
+        value="10+"
+        v-model="formValues.yearsOfExperience"
+      />
+      <label for="10+">10+</label>
+    </div>
+    <div>
+      <label for="age">Age</label>
+      <input type="number" id="age" v-model.number="formValues.age" />
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
+  </form>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      formValues: {
+        name: "",
+        profileSumarry: "",
+        country: "",
+        jobLocation: [],
+        remoteWork: "",
+        skillSet: [],
+        yearsOfExperience: "",
+        age: null,
+      },
+    };
+  },
+  computed: {},
+  methods: {
+    submitForm() {
+      console.log("FormValues", this.formValues);
+    },
+  },
+};
+</script>
+
+<style>
+.form {
+  display: inline-block;
+}
+.underline {
+  text-decoration: underline;
+}
+.promoted {
+  font-style: italic;
+}
+.new {
+  color: olivedrab;
+}
+.sold-out {
+  color: red;
+}
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
+}
+input + label {
+  font-weight: bold;
+  display: inline-flex;
+  margin-right: 20px;
+}
+input[type="text"],
+textarea,
+select {
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
